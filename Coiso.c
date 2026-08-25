@@ -1,9 +1,8 @@
-#include <stdio.h>
-#include <math.h>
- 
+include <stdio.h>
 int main() {
-    int numint, a, b, c, d, e, f, g;
-    double num, numd, ccnq, cvnt, cdez, ccnc, cum;
+    int numint, a, b, c, d, e, f, g, numdcem;
+    double num, numd;
+    int ccnq, cvnt, cdez, ccnc, cum;
     scanf("%lf", &num);
     numint = num;
     a = numint/100;
@@ -14,16 +13,16 @@ int main() {
     f = ((numint-(100*a+50*b+20*c+10*d))%5)/2;
     g = (numint-(100*a+50*b+20*c+10*d+5*e))%2;
     
-    numd = (num-(100*a+50*b+20*c+10*d+5*e+2*f+1*g));
-    if(numd<1 && numd>0){
-        ccnq = numd/0.5;
-        cvnt = (fmod(numd, 0.5))/0.25;
-        cdez = (fmod((numd-0.5*ccnq) , 0.25))/0.1;
-        ccnc = (fmod((numd-(0.5*ccnq+0.25*cvnt)) , 0.1))/0.05;
-        cum =  fmod((numd-(0.5*ccnq+0.25*cvnt+0.1*cdez)),0.05);
-    }
+   numd = num - numint;
+   numdcem = numd*100;
+    
+    ccnq = (numdcem%100)/50;
+    cvnt = (numdcem%50)/25;
+    cdez = ((numdcem-(50*ccnq))%25)/10;
+    ccnc = ((numdcem-(50*ccnq+25*cvnt))%10)/5;
+    cum  = ((numdcem-(50*ccnq+25*cvnt+10*cdez))%5);
     
     printf("NOTAS:\n%d nota(s) de R$ 100.00\n%d nota(s) de R$ 50.00\n%d nota(s) de R$ 20.00\n%d nota(s) de R$ 10.00\n%d nota(s) de R$ 5.00\n%d nota(s) de R$ 2.00\n", a, b, c, d, e, f);
-    printf("MOEDAS:\n%d moeda(s) de R$1.00\n%.0lf moeda(s) de R$0.50\n%.0lf moeda(s) de R$0.25\n%.0lf moeda(s) de R$0.10\n%.0lf moeda(s) de R$0.05\n%.0lf moeda(s) de R$0.01", g, ccnq, cvnt, cdez, ccnc, cum);
+    printf("MOEDAS:\n%d moeda(s) de R$1.00\n%d moeda(s) de R$0.50\n%d moeda(s) de R$0.25\n%d moeda(s) de R$0.10\n%d moeda(s) de R$0.05\n%d moeda(s) de R$0.01", g, ccnq, cvnt, cdez, ccnc, cum);
     return 0;
 }
